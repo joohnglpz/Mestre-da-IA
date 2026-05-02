@@ -278,15 +278,39 @@
         }
     }
 
-    @keyframes pulse {
-        0%, 100% {
-            opacity: 1;
-            text-shadow: 0 4px 12px rgba(255, 217, 102, 0.2);
-        }
-        50% {
-            opacity: 0.85;
-            text-shadow: 0 4px 20px rgba(255, 217, 102, 0.4);
-        }
+    .pricing-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, var(--accent-color), #f7c24e);
+        color: #152026;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 800;
+        padding: 12px 24px;
+        border-radius: 999px;
+        border: none;
+        box-shadow: 0 8px 20px rgba(255, 217, 102, 0.25);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        cursor: pointer;
+        margin-top: 16px;
+        width: 100%;
+        max-width: 180px;
+    }
+
+    .pricing-card:nth-child(2) .pricing-button {
+        background: linear-gradient(135deg, var(--cta-color), #ff7d3a);
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(240, 90, 40, 0.25);
+    }
+
+    .pricing-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(255, 217, 102, 0.35);
+    }
+
+    .pricing-card:nth-child(2) .pricing-button:hover {
+        box-shadow: 0 12px 28px rgba(240, 90, 40, 0.35);
     }
 
     @media (max-width: 720px) {
@@ -329,6 +353,12 @@
         .pricing-value {
             font-size: 1.8rem;
         }
+
+        .pricing-button {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            max-width: 160px;
+        }
     }
 </style>
 </head>
@@ -362,18 +392,19 @@
             <div class="pricing-value">R$ 9,90</div>
             <p class="pricing-description">Acesso ao <strong>Volume 1</strong> com as ferramentas essenciais de IA</p>
             <span class="pricing-highlight">✓ 1 Volume Completo</span>
+            <a href="https://pay.cakto.com.br/3f9aa24_870667" class="pricing-button" target="_blank">
+                Quero Este
+            </a>
         </div>
         <div class="pricing-card">
             <div class="pricing-value">R$ 17,90</div>
             <p class="pricing-description">Kit Completo com os <strong>4 Volumes</strong> - Economia garantida!</p>
             <span class="pricing-highlight">✓ 4 Volumes + Bônus</span>
+            <a href="https://pay.cakto.com.br/35e5nnw_870678" class="pricing-button" target="_blank">
+                Quero Este
+            </a>
         </div>
     </div>
-
-    <!-- Link do Checkout -->
-    <a href="https://m.youtube.com/watch?v=dQw4w9WgXcQ" class="cta-button" target="_blank">
-        Quero Acessar Agora
-    </a>
 </div>
 
 </body>
