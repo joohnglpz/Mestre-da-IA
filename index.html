@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap');
+
+    :root {
+        --bg-color: #152d3f;
+        --panel-color: rgba(255, 255, 255, 0.12);
+        --title-color: #f8f5e6;
+        --accent-color: #ffd966;
+        --accent-dark: #c79f3c;
+        --cta-color: #f05a28;
+        --cta-hover: #d5451e;
+        --text-color: #e8e6d8;
+        --border-color: rgba(255,255,255,0.18);
+        --shadow-color: rgba(0,0,0,0.25);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: radial-gradient(circle at top, #3f6d99 0%, #152d3f 42%, #0f2031 100%);
+        color: var(--text-color);
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .funnel-container {
+        width: min(100%, 900px);
+        padding: 48px 40px;
+        text-align: center;
+        background: var(--panel-color);
+        backdrop-filter: blur(18px);
+        border: 1px solid var(--border-color);
+        border-radius: 32px;
+        box-shadow: 0 30px 80px var(--shadow-color);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .funnel-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 35%);
+        pointer-events: none;
+    }
+
+    .headline {
+        position: relative;
+        z-index: 1;
+        color: var(--title-color);
+        font-size: clamp(2.6rem, 5vw, 4.2rem);
+        font-weight: 900;
+        line-height: 1.05;
+        margin: 0 0 24px;
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+        text-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    }
+
+    .headline span {
+        display: inline-block;
+        background: linear-gradient(90deg, #ffe18c, #ffd966, #f7c24e);
+        color: #152026;
+        padding: 0.12em 0.28em;
+        border-radius: 0.45em;
+    }
+
+    .subheadline {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(1.15rem, 2vw, 1.7rem);
+        font-weight: 500;
+        margin: 0 auto 40px;
+        max-width: 760px;
+        line-height: 1.45;
+        color: rgba(248, 245, 230, 0.95);
+    }
+
+    .subheadline::before {
+        content: 'Segue abaixo:';
+        display: block;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.9;
+    }
+
+    .image-wrapper {
+        border-radius: 24px;
+        overflow: hidden;
+        margin: 0 auto 36px;
+        max-width: 100%;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+        background: linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,255,255,0.08));
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: saturate(1.02) contrast(1.03);
+        transition: transform 0.5s ease;
+    }
+
+    .image-wrapper:hover img {
+        transform: scale(1.01);
+    }
+
+    .benefits-list {
+        text-align: left;
+        max-width: 700px;
+        margin: 0 auto 36px;
+        padding: 0;
+        list-style: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    .benefits-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        padding: 18px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .benefits-list li::before {
+        content: '✓';
+        min-width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        color: #1d2a2f;
+        background: var(--accent-color);
+        border-radius: 50%;
+        font-size: 1.05rem;
+        font-weight: 800;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .cta-button {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, var(--cta-color), #ff7d3a);
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.35rem;
+        font-weight: 800;
+        padding: 20px 48px;
+        border-radius: 999px;
+        border: none;
+        box-shadow: 0 18px 40px rgba(240, 90, 40, 0.25);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        cursor: pointer;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, var(--cta-hover), #ff722f);
+        box-shadow: 0 20px 36px rgba(240, 90, 40, 0.32);
+    }
+
+    .note {
+        margin: 0 auto 24px;
+        max-width: 680px;
+        color: rgba(248, 245, 230, 0.78);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 720px) {
+        body {
+            padding: 24px 12px;
+        }
+
+        .funnel-container {
+            padding: 32px 24px;
+            border-radius: 28px;
+        }
+
+        .headline {
+            font-size: 2.5rem;
+        }
+
+        .subheadline {
+            font-size: 1.15rem;
+        }
+
+        .benefits-list li {
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 18px 24px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="funnel-container">
+    
+    <h1 class="headline">O Guia Definitivo Para se tornar <span>O Mestre em IA</span></h1>
+    
+    <p class="subheadline">Transforme-se em um Power User e multiplique sua produtividade dominando as principais ferramentas de mercado.</p>
+
+    <!-- ÁREA DA IMAGEM -->
+    <div class="image-wrapper">
+        <!-- ATENÇÃO: Substitua o texto URL_DA_SUA_IMAGEM_AQUI pelo link direto da sua imagem hospedada -->
+        <img src="https://i.postimg.cc/t7G78vBJ/Gemini-Generated-Image-vxx61rvxx61rvxx6-(1).png" alt="Comparativo: Sem o Mestre em IA vs Com o Mestre em IA">
+    </div>
+
+    <!-- Gatilhos Mentais e Benefícios -->
+    <ul class="benefits-list">
+        <li>Domine o ecossistema completo: ChatGPT, Claude, Gemini e Perplexity.</li>
+        <li>Mais de 30 prompts profissionais e manuais de uso máximo.</li>
+        <li>Crie automações complexas com Make e agentes autônomos.</li>
+        <li>Acesso imediato a projetos práticos prontos para implementar.</li>
+    </ul>
+
+    <p class="note">Garanta acesso imediato e comece hoje mesmo com materiais criados para resultados rápidos.</p>
+
+    <!-- Link do Checkout -->
+    <a href="https://pay.cakto.com.br/3c9psdn_870433" class="cta-button" target="_blank">
+        Quero Acessar Agora
+    </a>
+</div>
+
+</body>
+</html>
